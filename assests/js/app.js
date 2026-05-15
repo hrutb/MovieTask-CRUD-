@@ -163,6 +163,27 @@ let Col3 = document.createElement('div')
      }
 
 
+function onRemove(ele){ 
+    console.log(ele);
+    
+       let remove= ele.closest('.col-md-3').id; 
+       console.log(remove); 
+    
+       let getindex= localArr.findIndex(ele=>ele.movieId===remove); 
+          
+       let getconfirm = confirm('You want to delete movie')
+       if(getconfirm){
+       localArr.splice(getindex,1); 
+
+       localStorage.setItem('moviesArr',JSON.stringify(localArr));
+       
+        ele.closest('.col-md-3').remove();
+       }
+
+
+
+       
+}
 
 
 
@@ -174,3 +195,5 @@ addMovie.addEventListener('click', onMovieToggle)
 
 closeMovie.forEach(btn =>btn.addEventListener('click', onMovieToggle ))
 movieForm.addEventListener('submit', onSubmit)
+
+
