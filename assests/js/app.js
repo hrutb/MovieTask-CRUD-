@@ -19,7 +19,7 @@ const MurlControl= document.getElementById('Murl')
 const MnameControl= document.getElementById('Mname')
 const MdescriptionControl= document.getElementById('Mdescription')
 const MratingControl= document.getElementById('Mrating')
-
+const updateMovie =document.getElementById('updateMovie');
 
 
 function setRating(rating){ 
@@ -100,7 +100,7 @@ function onSubmit(eve){
    
        console.log('movieAdd!!!');
    
-    let newObj = { 
+  let newObj = { 
       movieName:MnameControl.value ,
       movieImg:MurlControl.value ,
       movieDescription:MdescriptionControl.value ,
@@ -188,12 +188,33 @@ function onRemove(ele){
 
 
 
-function onEdit(ele){} 
+function onEdit(ele){ 
+      let editId= ele.closest('.col-md-3').id; 
+       localStorage.setItem('EditMovieId', JSON.stringify(editId))
+     let editObj =localArr.find(ele=>ele.movieId===editId); 
+     
+     MnameControl.value =editObj.movieName ;
+     MurlControl.value =editObj.movieImg ;
+     MdescriptionControl.value =editObj.movieDesciption ;
+     MratingControl.value=editObj.movieRating ;
+     
+     
+     addMovie.classList.add('d-none'); 
+     updateMovie.classList.remove('d-none');
+    onMovieToggle();
+      
+
+
+
+ } 
+
+
+
 
 
 addMovie.addEventListener('click', onMovieToggle)
 
-closeMovie.forEach(btn =>btn.addEventListener('click', onMovieToggle ))
-movieForm.addEventListener('submit', onSubmit)
-
+closeMovie.forEach(btn =>btn.addEventListener('click', onMovieToggle)); 
+movieForm.addEventListener('submit', onSubmit);
+updateMovie.addEventListener('click', onUpdate);
 
