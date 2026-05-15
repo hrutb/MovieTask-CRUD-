@@ -35,7 +35,7 @@ function setRating(rating){
 function template(arr){
    let res =' '; 
    arr.forEach(ele=>{  
-      res +=` <div class="col-md-3 col-sm-6" id="${ele.movieId}">
+      res +=` <div class="col-md-3 " id="${ele.movieId}">
                         <div class="card  movieCard">
                            
                             <div class="card-header  d-flex justify-content-between flex-grow-1">
@@ -66,7 +66,7 @@ function template(arr){
                             </div>
                             <div class="card-footer">
                               <div class="icons d-flex justify-content-between">
-                                <button class="btn btn-inline-block btn-outline-primary">Edit</button>
+                                <button   onclick="onEdit(this)" class="btn btn-inline-block btn-outline-primary">Edit</button>
                                   <button onclick="onRemove(this)" class="btn btn-inlice-block btn-outline-danger">Remove</button>
                                  
                                 </div>
@@ -97,7 +97,8 @@ function onMovieToggle(){
 
 function onSubmit(eve){ 
        eve.preventDefault(); 
-   console.log('movieAdd!!!');
+   
+       console.log('movieAdd!!!');
    
     let newObj = { 
       movieName:MnameControl.value ,
@@ -149,8 +150,8 @@ let Col3 = document.createElement('div')
                             </div>
                             <div class="card-footer">
                               <div class="icons d-flex justify-content-between">
-                                <button class="btn btn-inline-block btn-outline-primary">Edit</button>
-                                  <button onclick="onRemove()" class="btn btn-inlice-block btn-outline-danger">Remove</button>
+                                <button    onclick="onEdit(this)" class="btn btn-inline-block btn-outline-primary">Edit</button>
+                                  <button onclick="onRemove(this)" class="btn btn-inline-block btn-outline-danger">Remove</button>
                                  
                                 </div>
                             </div>
@@ -163,27 +164,10 @@ let Col3 = document.createElement('div')
 
 
 
-function onRemove(ele){ 
-    console.log(ele);
-    
-       let remove= ele.closest('col-md-3').id; 
-       console.log(remove); 
-    
-       let getindex= moviesArr.findIndex(ele=>ele.movieId===remove); 
-          
-       let getconfirm = confirm('You want to delete movie')
-       if(getconfirm){
-       localArr.splice(getindex,1); 
-
-       localStorage.setItem('moviesArr',JSON.stringify(localArr));
-       
-        ele.closest('col-md-3').remove;
-       }
 
 
 
-       
-}
+function onEdit(ele){} 
 
 
 addMovie.addEventListener('click', onMovieToggle)
