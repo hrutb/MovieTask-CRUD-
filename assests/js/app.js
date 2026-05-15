@@ -209,6 +209,66 @@ function onEdit(ele){
  } 
 
 
+ function onUpdate(){
+ let update = JSON.parse(localStorage.getItem("EditMovieId"));
+
+let updateObj ={ 
+      movieName:MnameControl.value ,
+      movieImg:MurlControl.value ,
+      movieDescription:MdescriptionControl.value ,
+      movieRating:MratingControl.value,
+      movieId:update 
+  
+}
+   let getindex =localArr.findIndex(ele=>ele.movieId===update); 
+    console.log(getindex);
+    
+   localArr[getindex] =updateObj; 
+
+   localStorage.setItem('moiviesArr',JSON.stringify(localArr)); 
+
+   let  div= document.getElementById(update) ;
+       div.innerHTML =`<div class="card">
+                     <div class="card-header d-flex justify-content-between flex-grow-1">
+                                <h2>${updateObj.movieName}</h2>
+                                <h3>
+
+                            <span class="badge ${setRating(updateObj.movieRating)}">${updateObj.movieRating}</span>
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="movieCard">
+                                       
+                                     <figure>
+                                           
+                                            <img 
+                                                src="${updateObj.movieImg}" 
+                                                
+                                                alt="${updateObj.movieName}">                                        
+     
+                                        <figcaption>
+                                               <h4>${updateObj.movieName}</h4>
+                                                <p>${updateObj.movieDescription}</p>
+                                        </figcaption>
+    
+                                      </figure>
+                                 </div> 
+                            </div>
+                            <div class="card-footer">
+                              <div class="icons d-flex justify-content-between">
+                                <button    onclick="onEdit(this)" class="btn btn-inline-block btn-outline-primary">Edit</button>
+                                  <button onclick="onRemove(this)" class="btn btn-inline-block btn-outline-danger">Remove</button>
+                                 
+                                </div>
+                            </div>
+                        </div>`
+        
+   movieForm.reset();
+   onMovieToggle();
+  
+ }
+
+
 
 
 
