@@ -103,7 +103,7 @@ function onSubmit(eve){
   let newObj = { 
       movieName:MnameControl.value ,
       movieImg:MurlControl.value ,
-      movieDescription:MdescriptionControl.value ,
+      movieDesciption:MdescriptionControl.value ,
       movieRating:MratingControl.value,
       movieId:Date.now().toString() 
 
@@ -120,7 +120,7 @@ function onSubmit(eve){
   onMovieToggle()
    
 let Col3 = document.createElement('div')
-    Col3.className=`col-md-3`;
+    Col3.className=`col-md-3  mb-3`;
     Col3.id=newObj.movieId;
     Col3.innerHTML= `<div class="card">
                      <div class="card-header d-flex justify-content-between flex-grow-1">
@@ -215,7 +215,7 @@ function onEdit(ele){
 let updateObj ={ 
       movieName:MnameControl.value ,
       movieImg:MurlControl.value ,
-      movieDescription:MdescriptionControl.value ,
+      movieDesciption:MdescriptionControl.value ,
       movieRating:MratingControl.value,
       movieId:update 
   
