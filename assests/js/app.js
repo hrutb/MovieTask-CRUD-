@@ -20,7 +20,7 @@ const MnameControl= document.getElementById('Mname')
 const MdescriptionControl= document.getElementById('Mdescription')
 const MratingControl= document.getElementById('Mrating')
 const updateMovie =document.getElementById('updateMovie');
-
+const addMovie1 =document.getElementById('addMovie1')
 
 function setRating(rating){ 
         if(rating>4){
@@ -262,7 +262,10 @@ let updateObj ={
                                 </div>
                             </div>
                         </div>`
-        
+    
+  addMovie.classList.remove('d-none'); 
+  updateMovie.classList.add('d-none');
+                        
    movieForm.reset();
    onMovieToggle();
   
@@ -272,7 +275,7 @@ let updateObj ={
 
 
 
-addMovie.addEventListener('click', onMovieToggle)
+addMovie1.addEventListener('click', onMovieToggle)
 
 closeMovie.forEach(btn =>btn.addEventListener('click', onMovieToggle)); 
 movieForm.addEventListener('submit', onSubmit);
